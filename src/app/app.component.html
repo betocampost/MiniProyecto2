@@ -1,0 +1,56 @@
+<form (submit)="guardarDatos()" #formulario>
+  <label>
+    Nombre:
+    <input type="text" [(ngModel)]="nombre" name="dato1" required>
+  </label>
+  <label>
+   Teléfono:
+    <input type="text" [(ngModel)]="telefono" name="dato2" required>
+  </label>
+  <label>
+    Email:
+    <input type="text" [(ngModel)]="email" name="dato3" required>
+  </label>
+  <label>
+    Fecha:
+    <input type="date" [(ngModel)]="fecha" name="dato4" id="date"required>
+  </label>
+  <label>
+    Hora:
+    <input type="time" [(ngModel)]="hora" name="dato5" id="time" required>
+  </label>
+  <button type="submit">Guardar datos</button>
+</form>
+
+
+<div *ngIf="historial.length > 0">
+  <h2>Datos guardados:</h2>
+</div>
+<div *ngIf="historial.length === 0">
+  <p>No hay datos guardados.</p>
+</div>
+
+
+<table *ngIf="historial.length > 0">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Email</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of historial">
+      <td>{{ item.nombre }}</td>
+      <td>{{ item.telefono }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.fecha }}</td>
+      <td>{{ item.hora }}</td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="historial.length === 0">
+  <p>No hay datos guardados en el historial.</p>
+</div>
